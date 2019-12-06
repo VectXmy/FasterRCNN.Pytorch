@@ -165,7 +165,7 @@ class RegionProposalNetwork(nn.Module):
                                         anchors,
                                         img_size,
                                         scale=scale)#(?,4)
-            index_b=batch_index*torch.ones(len(rois_b)).long()
+            index_b=batch_index*torch.ones(len(rois_b),device=rois_b.device).long()
             rois.append(rois_b)
             rois_inds.append(index_b)
         rois=torch.cat(rois,dim=0)#(??,4)
